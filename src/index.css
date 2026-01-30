@@ -1,0 +1,287 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Akiló Music - Elegant Premium Design System
+   Black, white, pale orange, soft gray palette
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+@layer base {
+  :root {
+    /* Deep black background for premium feel */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+
+    /* Card surfaces - slightly lighter black */
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 98%;
+
+    /* Popover */
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary - Pale orange/peach accent */
+    --primary: 28 80% 70%;
+    --primary-foreground: 0 0% 4%;
+
+    /* Secondary - Soft gray */
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 90%;
+
+    /* Muted - Subtle gray */
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 60%;
+
+    /* Accent - Warm highlight */
+    --accent: 28 60% 55%;
+    --accent-foreground: 0 0% 98%;
+
+    /* Destructive */
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Borders and inputs */
+    --border: 0 0% 18%;
+    --input: 0 0% 15%;
+    --ring: 28 80% 70%;
+
+    --radius: 0.25rem;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 28 80% 70%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 28 80% 70%;
+
+    /* Custom brand tokens */
+    --brand-peach: 28 80% 70%;
+    --brand-cream: 35 40% 90%;
+    --brand-charcoal: 0 0% 10%;
+    --brand-warm-gray: 30 5% 45%;
+  }
+
+  /* Light mode variant - not primary but available */
+  .light {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
+    --primary: 28 70% 45%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 30 10% 92%;
+    --secondary-foreground: 0 0% 15%;
+    --muted: 30 10% 95%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 28 60% 50%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 10% 88%;
+    --input: 30 10% 88%;
+    --ring: 28 70% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Elegant serif headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+    @apply font-medium tracking-tight;
+  }
+}
+
+@layer components {
+  /* Hero section styling */
+  .hero-section {
+    @apply relative min-h-screen flex items-center justify-center overflow-hidden;
+  }
+
+  .hero-overlay {
+    @apply absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background;
+  }
+
+  .hero-content {
+    @apply relative z-10 text-center px-6 max-w-5xl mx-auto;
+  }
+
+  /* Section containers */
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 py-24 md:py-32;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl lg:text-6xl text-foreground mb-6;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto;
+  }
+
+  /* Service cards with elegant hover */
+  .service-card {
+    @apply relative overflow-hidden rounded-sm bg-card border border-border p-8 
+           transition-all duration-500 ease-out
+           hover:border-primary/30 hover:shadow-[0_0_60px_-12px_hsl(var(--primary)/0.15)];
+  }
+
+  .service-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 
+           transition-opacity duration-500;
+  }
+
+  .service-card:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Testimonial styling */
+  .testimonial-card {
+    @apply bg-card/50 backdrop-blur-sm border border-border/50 rounded-sm p-8 md:p-12;
+  }
+
+  /* Image with elegant reveal */
+  .image-reveal {
+    @apply relative overflow-hidden;
+  }
+
+  .image-reveal::after {
+    content: '';
+    @apply absolute inset-0 bg-background transform translate-x-0 transition-transform duration-1000 ease-out;
+  }
+
+  .image-reveal.revealed::after {
+    @apply translate-x-full;
+  }
+
+  /* Link hover effect */
+  .nav-link {
+    @apply relative text-muted-foreground hover:text-foreground transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 bottom-0 w-0 h-px bg-primary transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* CTA button styles */
+  .cta-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 
+           bg-primary text-primary-foreground font-sans text-sm tracking-widest uppercase
+           transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20;
+  }
+
+  .cta-outline {
+    @apply inline-flex items-center justify-center px-8 py-4 
+           border border-foreground/20 text-foreground font-sans text-sm tracking-widest uppercase
+           transition-all duration-300 hover:border-primary hover:text-primary;
+  }
+
+  /* Form input styling */
+  .form-input {
+    @apply w-full bg-muted border-0 border-b border-border px-0 py-4
+           text-foreground placeholder:text-muted-foreground/50
+           focus:outline-none focus:border-primary transition-colors duration-300;
+  }
+
+  .form-textarea {
+    @apply w-full bg-muted border border-border rounded-sm px-4 py-4
+           text-foreground placeholder:text-muted-foreground/50
+           focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 
+           transition-all duration-300 resize-none;
+  }
+}
+
+@layer utilities {
+  /* Fade in animation */
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in-delay {
+    animation: fadeIn 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in-delay-2 {
+    animation: fadeIn 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  /* Subtle text gradient for headings */
+  .text-gradient {
+    @apply bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent;
+    background-size: 200% auto;
+  }
+
+  /* Premium spacing utility */
+  .space-premium {
+    @apply py-24 md:py-32 lg:py-40;
+  }
+
+  /* Elegant divider */
+  .divider-elegant {
+    @apply w-16 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto;
+  }
+}
