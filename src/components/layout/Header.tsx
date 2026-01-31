@@ -42,7 +42,7 @@ const Header = () => {
           <Link to="/" className="relative z-10">
             <img
               src={logo}
-              alt="Akiló Music"
+              alt="East Coast Groove"
               className="h-10 md:h-12 w-auto"
             />
           </Link>
