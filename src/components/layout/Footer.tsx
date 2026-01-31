@@ -61,11 +61,14 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-muted-foreground text-xs">
+        
+        {/*<div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-muted-foreground text-xs">*/}
+        <div className="mt-16 pt-8 border-t border-border">
+          <p className="text-muted-foreground text-xs text-center md:text-left">        
             © {new Date().getFullYear()} East Coast Groove. All rights reserved.
           </p>
-          <div className="flex gap-6">
+          {/*<div className="flex gap-6">
             <a
               href="#"
               className="text-muted-foreground hover:text-primary transition-colors text-xs uppercase tracking-wider"
@@ -84,7 +87,7 @@ const Footer = () => {
             >
               LinkedIn
             </a>
-          </div>
+          </div>*/}
         </div>
       </div>
     </footer>
