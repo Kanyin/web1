@@ -9,7 +9,7 @@ const Introduction = () => {
           for your unique moment.
         </h2>
         <p className="mt-10 text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
-          Akiló Music is a collective of world-class musicians united by a passion 
+          East Coast Groove is a collective of world-class musicians united by a passion 
           for genre-fluid performance. Whether your vision calls for the elegance of 
           chamber music, the energy of pop, or something entirely new, we create 
           immersive sonic experiences that elevate every occasion.
