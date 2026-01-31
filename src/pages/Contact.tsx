@@ -115,7 +115,7 @@ const Contact = () => {
                 <div>
                   <p className="text-foreground font-medium mb-1">Based In</p>
                   <p className="text-muted-foreground text-sm">
-                    New York City
+                    New York City & Philadelphia
                     <br />
                     Available Worldwide
                   </p>
