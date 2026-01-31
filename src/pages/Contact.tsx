@@ -77,10 +77,10 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Form & Info */}
+      {/* Contact Form &  */}
       <section className="section-container pt-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-          {/* Contact Info */}
+          {/* Contact  */}
           <div className="lg:col-span-1">
             <h2 className="text-2xl font-serif text-foreground mb-8">
               Get in Touch
@@ -91,10 +91,10 @@ const Contact = () => {
                 <div>
                   <p className="text-foreground font-medium mb-1">Email</p>
                   <a
-                    href="mailto:booking@eastgroove.com"
+                    href="mailto:info@eastgroove.com"
                     className="text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
-                    booking@eastgroove.com
+                    info@eastgroove.com
                   </a>
                 </div>
               </div>
