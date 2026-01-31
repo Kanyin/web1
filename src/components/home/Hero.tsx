@@ -21,10 +21,10 @@ const Hero = () => {
           Live Music Ensemble
         </p>
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-foreground mb-6 animate-fade-in-delay">
-          Live Music Without Boundaries
+          Built for the Moment
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 animate-fade-in-delay-2">
-          From classical to jazz and pop — custom performances for unforgettable moments
+          From classical to jazz and pop — custom performances for memorable events
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delay-2">
           <Link to="/contact" className="cta-primary">
