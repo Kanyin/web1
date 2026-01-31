@@ -1,30 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import "./index.css"; // Make sure this file exists in src/
-import { ErrorBoundary } from "./ErrorBoundary";
+import "./index.css"; // must exist in src/
 
-// Global error logging (safe for production)
+// Global error logging (optional, safe for production)
 window.addEventListener("error", (event) => {
   console.error("Global error:", event.error);
 });
-
 window.addEventListener("unhandledrejection", (event) => {
   console.error("Unhandled promise rejection:", event.reason);
 });
 
 const rootElement = document.getElementById("root");
+if (!rootElement) throw new Error("Root element not found");
 
-if (!rootElement) {
-  console.error("Root element not found");
-} else {
-  ReactDOM.createRoot(rootElement).render(
-    <React.StrictMode>
-      <ErrorBoundary>
-        <App />
-      </ErrorBoundary>
-    </React.StrictMode>
-  );
-}
-
-
+ReactDOM.createRoot(rootElement).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
