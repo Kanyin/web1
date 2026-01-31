@@ -21,7 +21,7 @@ const Footer = () => {
               Navigation
             </h4>
             <ul className="space-y-3">
-              {["Home", "About", "Services", "Clients", "Contact"].map((item) => (
+              {["Home", "About", "Services"/*, "Clients"*/, "Contact"].map((item) => (
                 <li key={item}>
                   <Link
                     to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
