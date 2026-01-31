@@ -64,19 +64,18 @@ const About = () => {
           </div>
           <div className="space-y-6 text-muted-foreground leading-relaxed">
             <p>
-              Akiló Music was born from a simple belief: that the most powerful 
-              musical experiences happen when boundaries dissolve. Founded by a 
-              collective of conservatory-trained musicians with backgrounds spanning 
-              symphony orchestras, jazz clubs, and recording studios, we set out to 
-              redefine what live ensemble music could be.
+              East Coast Groove was born from a shared understanding: that the East Coast 
+              has always been a crucible where musical traditions collide, evolve, and endure. 
+              Formed by a collective of musicians all shaped by the Eastern seaboard, 
+              the band draws from a landscape defined by historic jazz corridors, academic rigor, 
+              underground scenes, and cities where music is not an accessory—but a language.
             </p>
             <p>
-              Our name, "Akiló," means "to call" or "to summon" — reflecting our 
-              mission to bring people together through the universal language of music. 
-              Whether we're performing Bach at a candlelit ceremony, reimagining pop 
-              anthems at a rooftop reception, or premiering commissioned works on the 
-              concert stage, we approach every performance with the same dedication to 
-              excellence and connection.
+              Our name reflects both place and philosophy. East Coast Groove speaks to the 
+              rhythmic intelligence forged in cities like New York, Philadelphia, Boston, 
+              and beyond—where swing met scholarship, soul met structure, and innovation
+              has always lived alongside tradition. The “groove” is not a style; 
+              it’s an approach—rooted, adaptive, and deeply human.
             </p>
             <p>
               What sets us apart is our commitment to collaboration. We work closely 
