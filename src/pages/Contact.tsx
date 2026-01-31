@@ -91,10 +91,10 @@ const Contact = () => {
                 <div>
                   <p className="text-foreground font-medium mb-1">Email</p>
                   <a
-                    href="mailto:hello@akilomusic.com"
+                    href="mailto:booking@eastgroove.com"
                     className="text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
-                    hello@akilomusic.com
+                    booking@eastgroove.com
                   </a>
                 </div>
               </div>
