@@ -9,5 +9,5 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
   },
-  base: '/', // Make sure this matches your repo name
+  base: './', // Make sure this matches your repo name
 })
