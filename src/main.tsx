@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import "./index.css";
+import "./index.css"; // Make sure this file exists in src/
 import { ErrorBoundary } from "./ErrorBoundary";
 
 // Global error logging (safe for production)
@@ -18,8 +18,7 @@ const rootElement = document.getElementById("root");
 if (!rootElement) {
   console.error("Root element not found");
 } else {
-  const root = ReactDOM.createRoot(rootElement);
-  root.render(
+  ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
       <ErrorBoundary>
         <App />
@@ -27,4 +26,5 @@ if (!rootElement) {
     </React.StrictMode>
   );
 }
+
 
