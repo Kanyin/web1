@@ -8,9 +8,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
-            <img src={logo} alt="Akiló Music" className="h-10 mb-6" />
+            <img src={logo} alt="East Coast Groove" className="h-10 mb-6" />
             <p className="text-muted-foreground text-sm leading-relaxed max-w-md">
-              From classical to contemporary — Akiló Music delivers unforgettable 
+              From classical to contemporary — East Coast delivers unforgettable 
               live performances tailored to your unique moment.
             </p>
           </div>
@@ -42,10 +42,10 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
                 <a
-                  href="mailto:hello@akilomusic.com"
+                  href="mailto:info@eastgroove.com"
                   className="hover:text-primary transition-colors duration-300"
                 >
-                  hello@akilomusic.com
+                  info@eastgroove.com
                 </a>
               </li>
               <li>
