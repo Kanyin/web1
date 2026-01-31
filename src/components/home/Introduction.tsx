@@ -9,10 +9,12 @@ const Introduction = () => {
           for your unique moment.
         </h2>
         <p className="mt-10 text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
-          East Coast Groove is a collective of professional musicians united by a passion 
-          for genre-fluid performance. Whether your vision calls for the elegance of 
-          chamber music, the energy of pop, or something entirely new, we create 
-          immersive sonic experiences that elevate every occasion.
+          East Coast Groove is a collective of seasoned musicians shaped by the rigor and 
+          creative legacy of the East Coast. We move fluidly across styles, not to follow 
+          trends, but to serve the moment. From refined, intimate settings to high-energy 
+          celebrations—and even concepts that don’t yet have a name—we design immersive 
+          sonic experiences with precision, taste, and intention, elevating every occasion
+          we’re part of.
         </p>
       </div>
     </section>
