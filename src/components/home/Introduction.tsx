@@ -4,9 +4,9 @@ const Introduction = () => {
       <div className="max-w-4xl mx-auto text-center">
         <div className="divider-elegant mb-12" />
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-foreground leading-relaxed">
-          Where classical artistry meets contemporary soul — 
-          <span className="text-primary"> every performance is crafted </span>
-          for your unique moment.
+          Where precision meets possibility — 
+          <span className="text-primary"> each performance invents </span>
+          its own space in sound and experience.
         </h2>
         <p className="mt-10 text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
           East Coast Groove is a collective of seasoned musicians shaped by the rigor and 
