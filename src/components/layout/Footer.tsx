@@ -24,15 +24,15 @@ const Footer = () => {
               {["Home", "About", "Services", "Clients", "Contact"].map((item) => {
                 if (item === "Clients" && !showClients) return null; // hide Clients
                 return (
-                <li key={item}>
-                  <Link
-                    to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
-                  >
-                    {item}
-                  </Link>
-                </li>
-               );
+                  <li key={item}>
+                    <Link
+                      to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                      className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                );
               })}
             </ul>
           </div>
