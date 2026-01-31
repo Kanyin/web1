@@ -21,7 +21,9 @@ const Footer = () => {
               Navigation
             </h4>
             <ul className="space-y-3">
-              {["Home", "About", "Services", "Clients", "Contact"].map((item) => (
+              {["Home", "About", "Services", "Clients", "Contact"].map((item) => {
+                if (item === "Clients" && !showClients) return null; // hide Clients
+                return (
                 <li key={item}>
                   <Link
                     to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
@@ -65,6 +67,7 @@ const Footer = () => {
           <p className="text-muted-foreground text-xs">
             © {new Date().getFullYear()} Akiló Music. All rights reserved.
           </p>
+          {showSocials && (
           <div className="flex gap-6">
             <a
               href="#"
@@ -85,6 +88,7 @@ const Footer = () => {
               LinkedIn
             </a>
           </div>
+        )}
         </div>
       </div>
     </footer>
