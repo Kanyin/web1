@@ -126,7 +126,7 @@ const About = () => {
       </section>
 
       {/* Musicians Section */}
-      <section className="section-container">
+      {/*<section className="section-container">
         <div className="text-center mb-16">
           <p className="text-primary font-sans text-sm tracking-[0.3em] uppercase mb-4">
             The Ensemble
@@ -150,7 +150,7 @@ const About = () => {
             </div>
           ))}
         </div>
-      </section>
+      </section>*/}
 
       {/* CTA */}
       <section className="bg-card/30">
