@@ -25,31 +25,27 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    try {
-    const response = await fetch(
+  try {
+    const res = await fetch(
       "https://contact-form.digbadara-finance.workers.dev",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          ...formData,
-          _gotcha: "", // spam trap
-        }),
+        body: JSON.stringify(formData),
       }
     );
 
-    if (!response.ok) {
-      throw new Error("Failed to send message");
-    }
-      
+    if (!res.ok) throw new Error("Submission failed");
+
     toast({
       title: "Request Received",
-      description: "Thank you for your inquiry. We'll be in touch within 24 hours.",
+      description:
+        "Thank you for your inquiry. We'll be in touch within 24 hours.",
     });
 
     setFormData({
@@ -60,8 +56,17 @@ const Contact = () => {
       location: "",
       message: "",
     });
+  } catch (err) {
+    toast({
+      title: "Submission Error",
+      description: "Please try again or email us directly.",
+      variant: "destructive",
+    });
+  } finally {
     setIsSubmitting(false);
-  };
+  }
+};
+
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
