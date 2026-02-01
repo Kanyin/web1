@@ -33,11 +33,11 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
             <p className="text-primary font-sans text-sm tracking-[0.3em] uppercase mb-4">
-              About Akiló Music
+              About East Coast Groove
             </p>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-foreground mb-6">
-              Where Virtuosity
-              <span className="block text-primary">Meets Versatility</span>
+              Where Music
+              <span className="block text-primary">Meets Mastery</span>
             </h1>
           </div>
         </div>
@@ -47,7 +47,7 @@ const About = () => {
       <section className="relative h-[50vh] md:h-[70vh] overflow-hidden">
         <img
           src={aboutImage}
-          alt="Akiló Music Ensemble"
+          alt="East Coast Groove Ensemble"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
