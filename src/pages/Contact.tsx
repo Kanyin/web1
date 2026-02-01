@@ -28,9 +28,25 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+    const response = await fetch(
+      "https://contact-form.digbadara-finance.workers.dev",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          _gotcha: "", // spam trap
+        }),
+      }
+    );
 
+    if (!response.ok) {
+      throw new Error("Failed to send message");
+    }
+      
     toast({
       title: "Request Received",
       description: "Thank you for your inquiry. We'll be in touch within 24 hours.",
