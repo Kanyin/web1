@@ -133,7 +133,7 @@ const Services = () => {
                 Artistry on the Concert Stage
               </h2>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                Beyond private events, Akiló Music presents innovative concert 
+                Beyond private events, East Coast presents innovative concert 
                 programming that challenges convention while honoring tradition. 
                 We partner with venues, festivals, and cultural institutions to 
                 create memorable musical experiences.
@@ -169,14 +169,12 @@ const Services = () => {
       <section className="section-container">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-serif text-foreground mb-6">
-            Custom Arrangements & Genre Blending
+            Custom Arrangements
           </h2>
           <p className="text-muted-foreground mb-8 leading-relaxed">
-            One of our signature offerings is the ability to create custom 
-            arrangements of any song for any ensemble configuration. Want 
-            your favorite pop song performed by a string quartet? A cinematic 
-            film score for your cocktail hour? Classical pieces reimagined 
-            with a jazz sensibility? We make it happen.
+            Our arranging work is highly personalized. We take existing music
+            and reshape it with intention and musical integrity, ensuring it 
+            suits the ensemble, occasion, and atmosphere you’re aiming to create.
           </p>
           <Link to="/contact" className="cta-primary">
             Customize Your Performance
