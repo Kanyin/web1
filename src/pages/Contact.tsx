@@ -21,6 +21,7 @@ const Contact = () => {
     eventType: "",
     location: "",
     message: "",
+    _gotcha: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -155,6 +156,16 @@ const Contact = () => {
           {/* Form */}
           <div className="lg:col-span-2">
             <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Honeypot field – humans never see this */}
+              <input
+                type="text"
+                name="_gotcha"
+                value={(formData as any)._gotcha || ""}
+                onChange={handleChange}
+                style={{ display: "none" }}
+                tabIndex={-1}
+                autoComplete="off"
+              />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <label
