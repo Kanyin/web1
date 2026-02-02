@@ -31,7 +31,7 @@ const Contact = () => {
 
   try {
     const res = await fetch(
-      "https://contact-form.digbadara-finance.workers.dev",
+      "https://contact-form.digbadara-finance.workers.dev/",
       {
         method: "POST",
         headers: {
