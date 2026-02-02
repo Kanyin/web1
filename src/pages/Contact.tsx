@@ -88,8 +88,7 @@ const Contact = () => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.message || `Request failed with status ${response.status}`);
+        throw new Error("Failed to submit form. Your message may not have been sent.");
       }
 
       toast({
