@@ -1,7 +1,10 @@
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, AlertCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { z } from "zod";
+
+const WORKER_ENDPOINT = "https://contact-form.digbadara-finance.workers.dev";
 
 const eventTypes = [
   "Wedding",
@@ -12,6 +15,19 @@ const eventTypes = [
   "Other",
 ];
 
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  eventDate: z.string().optional(),
+  eventType: z.string().optional(),
+  location: z.string().trim().max(200, "Location must be less than 200 characters").optional(),
+  message: z.string().trim().min(1, "Message is required").max(2000, "Message must be less than 2000 characters"),
+});
+
+type FormErrors = {
+  [key: string]: string;
+};
+
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
@@ -21,53 +37,87 @@ const Contact = () => {
     eventType: "",
     location: "",
     message: "",
-    _gotcha: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const validateForm = (): boolean => {
+    try {
+      contactSchema.parse(formData);
+      setErrors({});
+      return true;
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const newErrors: FormErrors = {};
+        error.errors.forEach((err) => {
+          if (err.path[0]) {
+            newErrors[err.path[0] as string] = err.message;
+          }
+        });
+        setErrors(newErrors);
+      }
+      return false;
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+    e.preventDefault();
+    setSubmitError(null);
 
-  try {
-    const res = await fetch(
-      "https://contact-form.digbadara-finance.workers.dev/",
-      {
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(WORKER_ENDPOINT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          eventDate: formData.eventDate || undefined,
+          eventType: formData.eventType || undefined,
+          location: formData.location?.trim() || undefined,
+          message: formData.message.trim(),
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || `Request failed with status ${response.status}`);
       }
-    );
 
-    if (!res.ok) throw new Error("Submission failed");
+      toast({
+        title: "Request Received",
+        description: "Thank you for your inquiry. We'll be in touch within 24 hours.",
+      });
 
-    toast({
-      title: "Request Received",
-      description:
-        "Thank you for your inquiry. We'll be in touch within 24 hours.",
-    });
-
-    setFormData({
-      name: "",
-      email: "",
-      eventDate: "",
-      eventType: "",
-      location: "",
-      message: "",
-    });
-  } catch (err) {
-    toast({
-      title: "Submission Error",
-      description: "Please try again or email us directly.",
-      variant: "destructive",
-    });
-  } finally {
-    setIsSubmitting(false);
-  }
-};
-
+      setFormData({
+        name: "",
+        email: "",
+        eventDate: "",
+        eventType: "",
+        location: "",
+        message: "",
+      });
+      setErrors({});
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to submit form. Please try again.";
+      setSubmitError(errorMessage);
+      toast({
+        title: "Submission Failed",
+        description: errorMessage,
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -99,10 +149,10 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Form &  */}
+      {/* Contact Form & Info */}
       <section className="section-container pt-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-          {/* Contact  */}
+          {/* Contact Info */}
           <div className="lg:col-span-1">
             <h2 className="text-2xl font-serif text-foreground mb-8">
               Get in Touch
@@ -137,7 +187,7 @@ const Contact = () => {
                 <div>
                   <p className="text-foreground font-medium mb-1">Based In</p>
                   <p className="text-muted-foreground text-sm">
-                    New York City & Philadelphia
+                    New York City
                     <br />
                     Available Worldwide
                   </p>
@@ -155,17 +205,13 @@ const Contact = () => {
 
           {/* Form */}
           <div className="lg:col-span-2">
+            {submitError && (
+              <div className="mb-6 p-4 bg-destructive/10 border border-destructive/20 rounded-lg flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 text-destructive mt-0.5 shrink-0" />
+                <p className="text-destructive text-sm">{submitError}</p>
+              </div>
+            )}
             <form onSubmit={handleSubmit} className="space-y-8">
-              {/* Honeypot field – humans never see this */}
-              <input
-                type="text"
-                name="_gotcha"
-                value={(formData as any)._gotcha || ""}
-                onChange={handleChange}
-                style={{ display: "none" }}
-                tabIndex={-1}
-                autoComplete="off"
-              />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <label
@@ -181,9 +227,12 @@ const Contact = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="form-input"
+                    className={`form-input ${errors.name ? "border-destructive" : ""}`}
                     placeholder="John Smith"
                   />
+                  {errors.name && (
+                    <p className="text-destructive text-xs mt-1">{errors.name}</p>
+                  )}
                 </div>
                 <div>
                   <label
@@ -199,9 +248,12 @@ const Contact = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="form-input"
+                    className={`form-input ${errors.email ? "border-destructive" : ""}`}
                     placeholder="john@example.com"
                   />
+                  {errors.email && (
+                    <p className="text-destructive text-xs mt-1">{errors.email}</p>
+                  )}
                 </div>
               </div>
 
@@ -278,9 +330,12 @@ const Contact = () => {
                   rows={6}
                   value={formData.message}
                   onChange={handleChange}
-                  className="form-textarea"
+                  className={`form-textarea ${errors.message ? "border-destructive" : ""}`}
                   placeholder="Share your vision for the event, any specific songs or genres you'd like, and any other details that would help us understand your needs..."
                 />
+                {errors.message && (
+                  <p className="text-destructive text-xs mt-1">{errors.message}</p>
+                )}
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
