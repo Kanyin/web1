@@ -12,6 +12,9 @@ const eventTypes = [
   "Private Party",
   "Gala",
   "Concert",
+  "Press",
+  "Programming",
+  "Partnerships"
   "Other",
 ];
 
@@ -174,10 +177,10 @@ const Contact = () => {
                 <div>
                   <p className="text-foreground font-medium mb-1">Phone</p>
                   <a
-                    href="tel:+15551234567"
+                    href="tel:+12672253572"
                     className="text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
-                    +1 (555) 123-4567
+                    +1 ‪(267) 225-3572‬
                   </a>
                 </div>
               </div>
