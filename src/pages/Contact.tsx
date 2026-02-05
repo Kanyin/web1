@@ -180,7 +180,7 @@ const Contact = () => {
                     href="tel:+12672253572"
                     className="text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
-                      +1 (267) 722-3572‬
+                    +1 (267) 225-3572
                   </a>
                 </div>
               </div>
