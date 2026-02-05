@@ -14,7 +14,7 @@ const eventTypes = [
   "Concert",
   "Press",
   "Programming",
-  "Partnerships"
+  "Partnerships",
   "Other",
 ];
 
