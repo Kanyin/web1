@@ -50,10 +50,10 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="tel:+15551234567"
+                  href="tel:+12672253572"
                   className="hover:text-primary transition-colors duration-300"
                 >
-                  +1 (555) 123-4567
+                  +1 (267) 225-3572
                 </a>
               </li>
             </ul>
